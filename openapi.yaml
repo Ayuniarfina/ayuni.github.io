@@ -1,0 +1,1643 @@
+openapi: 3.0.0
+info:
+  title: IndiHome Smart Mockup API V3
+  description: This is a simple API
+  contact:
+    email: ayuniarfina06@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/telkomdds/IHS-Mockup-V3/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: Device Brand
+  description: Wrap up API Ezviz
+paths:
+  /v3/login/msisdn:
+    post:
+      tags:
+      - User
+      summary: Login by Msisdn
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BodyLoginMsisdn'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginSuccess'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - basicAuth: []
+  /v3/register/msisdn:
+    post:
+      tags:
+      - User
+      summary: Register by Msisdn
+      description: Hit this API if 'firstLogin' is true from response API Login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RegisterUser'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200RegisterUsers'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+  /v3/profile/{msisdn}:
+    get:
+      tags:
+      - User
+      summary: Get user by msisdn
+      parameters:
+      - name: msisdn
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 122604292806
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200GetUsers'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+  /v3/profile/:
+    put:
+      tags:
+      - User
+      summary: Update user by msisdn
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200Users'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+  /api/v3/login/{msisdn}:
+    get:
+      tags:
+      - Device Brand Ezviz
+      summary: Login / Get Ezviz Token
+      parameters:
+      - name: msisdn
+        in: path
+        description: phone number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: "6281395217103"
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200login-ezviz-token'
+        "400":
+          description: bad input parameter
+        "409":
+          description: an existing item already exists
+      security:
+      - basicAuth: []
+  /api/v3/devices/:
+    put:
+      tags:
+      - Device Brand Ezviz
+      summary: Update Devices Ezviz
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/updateDevicesEzviz'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200UpdateDeviceEzviz'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Device Brand Ezviz
+      summary: Add Device
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/addDevice-ezviz'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200AddDevice'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Device Brand Ezviz
+      summary: Delete Device
+      parameters:
+      - name: msisdn
+        in: query
+        description: phone number
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "6281395217103"
+      - name: deviceSerial
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "6281395217103"
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200delete-device'
+      security:
+      - basicAuth: []
+  /api/v3/camera:
+    get:
+      tags:
+      - Device Brand Ezviz
+      summary: Get Camera List
+      description: Hit API get icode Device, and API Get Ezviz Device
+      parameters:
+      - name: msisdn
+        in: query
+        description: Get Ezviz Device where device_serial not startwith
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "6282243836969"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camera'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - basicAuth: []
+  /v3/token/{msisdn}:
+    get:
+      tags:
+      - Device Management
+      summary: Get Device Token
+      parameters:
+      - name: msisdn
+        in: path
+        description: phone number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: "6281395217103"
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200get-ezviz-token'
+        "400":
+          description: bad input parameter
+        "409":
+          description: an existing item already exists
+      security:
+      - bearerAuth: []
+  /v3/device:
+    put:
+      tags:
+      - Device Management - Ezviz
+      summary: Update Devices
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/updateDevices'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200UpdateDevice'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Device Management - Ezviz
+      summary: Add Device
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/addDevice'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200AddDevice'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Device Management - Ezviz
+      summary: Delete Device
+      parameters:
+      - name: brand
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: ezviz
+      - name: msisdn
+        in: query
+        description: phone number
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "6281395217103"
+      - name: deviceSerial
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "6281395217103"
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200delete-device'
+      security:
+      - basicAuth: []
+  /v3/camera:
+    get:
+      tags:
+      - Device Management
+      summary: Get Camera List
+      description: Hit API get icode Device, and API Get Ezviz Device
+      parameters:
+      - name: msisdn
+        in: query
+        description: Get Ezviz Device where device_serial not startwith
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "6282243836969"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camera'
+        "400":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "500":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+      security:
+      - bearerAuth: []
+  /devices/v1/alarm/merged:
+    get:
+      tags:
+      - Device Management - Alarm
+      summary: Alarm merge
+      parameters:
+      - name: alarmId
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: 04a13451-ef9d-4950-a97a-49371ecdf5f5
+      - name: ndmain
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "02121202079"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200Alarm'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+  /v3/alarm:
+    get:
+      tags:
+      - Device Management - Alarm
+      summary: Alarm Get List or by Id
+      parameters:
+      - name: msisdn
+        in: query
+        description: get notification by msisdn
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "02121202079"
+      - name: alarmId
+        in: query
+        description: get notification by alarmId
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: 04a13451-ef9d-4950-a97a-49371ecdf5f5
+      - name: devSerial
+        in: query
+        description: get notification by device serial
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: EZ089089
+      - name: isread
+        in: query
+        description: get notification by isread
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          example: false
+      - name: startDate
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: 2019-10-13
+      - name: endDate
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: 2019-10-13
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200Alarm'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Device Management - Alarm
+      summary: Change isRead Value
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body-put-alarm'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200PutAlarm'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Device Management - Alarm
+      summary: Create Alarm (without push  message)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BodyAlarm'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200createAlarm'
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Device Management - Alarm
+      summary: Delete Alarm
+      parameters:
+      - name: msisdn
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: "02121202079"
+      - name: alarmId
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: 04a13451-ef9d-4950-a97a-49371ecdf5f5
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200DeleteAlarm'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+  /v3/fcm/token:
+    put:
+      tags:
+      - User
+      summary: Update and Insert FCM Token
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200FcmToken'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - User
+      summary: Delete fcm token
+      parameters:
+      - name: fcm_token
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 122604292806
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200DeleteFCM'
+        "404":
+          description: Not found
+        "500":
+          description: Internal Error
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    "400":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: paramater kurang
+        code:
+          type: integer
+          example: 400
+    "401":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Access token is wrong!/Token is not valid!/Token expired
+        code:
+          type: integer
+          example: 401
+    "403":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Token not found in your header request!/Access Token is wrong!/Access
+            forbidden for this user!
+        code:
+          type: integer
+          example: 403
+    "404":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Data tidak ditemukan
+        code:
+          type: integer
+          example: 404
+    "500":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Internal server error
+        code:
+          type: integer
+          example: 500
+    "200login-ezviz-token":
+      required:
+      - code
+      - data
+      - message
+      - success
+      type: object
+      properties:
+        success:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        data:
+          $ref: '#/components/schemas/get-ezviz-token'
+    BodyLoginMsisdn:
+      type: object
+      properties:
+        msisdn:
+          type: integer
+          description: phone number
+          example: 81267632788
+        otpSignature:
+          type: string
+          example: 1q2w
+        otp:
+          type: integer
+          description: checked in the second request after input OTP
+          example: 1234
+    LoginSuccess:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: '#/components/schemas/userData'
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+    userData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ID2508338
+        fullname:
+          type: string
+          example: Pelanggan
+        msisdn:
+          type: string
+          example: "081380173208"
+        profile:
+          type: string
+          example: ca3c23fc7775f06287b3a64a1f5c39d6
+        gender:
+          type: string
+          example: pria
+        birthDate:
+          type: string
+        email:
+          type: string
+        firstLogin:
+          type: boolean
+          example: true
+        userToken:
+          type: string
+          example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJubyI6IklE
+    RegisterUser:
+      type: object
+      properties:
+        msisdn:
+          type: string
+          example: "081380173208"
+        fullname:
+          type: string
+          example: Dimas Dandi Josia
+        gender:
+          type: string
+          example: Pria
+        birthdate:
+          type: string
+          example: 2019-01-02
+    "200RegisterUsers":
+      type: object
+      properties:
+        success:
+          type: string
+          example: "true"
+        message:
+          type: string
+          example: Register berhasil
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/UserDataReg'
+    UserDataReg:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ID2508338
+        fullname:
+          type: string
+          example: Pelanggan
+        msisdn:
+          type: string
+          example: "081380173208"
+        profile:
+          type: string
+          example: ca3c23fc7775f06287b3a64a1f5c39d6
+        gender:
+          type: string
+          example: pria
+        birthDate:
+          type: string
+        email:
+          type: string
+        firstLogin:
+          type: boolean
+          example: true
+        createdAt:
+          type: string
+          example: 2020-07-06T02:39:11.000Z
+        updatedAt:
+          type: string
+          example: 2020-07-06T02:39:11.000Z
+    UpdateUser:
+      type: object
+      properties:
+        fullname:
+          type: string
+          example: Dimas Dandi Josia
+        gender:
+          type: string
+          example: Pria
+        profile:
+          type: string
+          example: /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAFXAa0DASIAAhEBAxEB/
+        msisdn:
+          type: string
+          example: "081380173208"
+        birthdate:
+          type: string
+          example: 1996-06-10
+    "200Users":
+      type: object
+      properties:
+        success:
+          type: string
+          example: "true"
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/UpdateUser'
+    "200GetUsers":
+      type: object
+      properties:
+        success:
+          type: string
+          example: "true"
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/200GetUsers_data'
+    get-ezviz-token:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          example: ra.5iw8yvzt497dxrkob78zscg83fzg6pwl-7p1vbzmw4j-1k9h4cx-ljsulcc3n
+        areaDomain:
+          type: string
+          example: https://isgpopen.ezvizlife.com
+        account_id:
+          type: string
+          example: ce00be79a5d042d891dddd08d68ff4a5
+    "200get-ezviz-token":
+      required:
+      - code
+      - data
+      - message
+      - success
+      type: object
+      properties:
+        success:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        data:
+          $ref: '#/components/schemas/200getezviztoken_data'
+    addDevice:
+      type: object
+      properties:
+        brand:
+          type: string
+          example: ezviz
+        msisdn:
+          type: string
+          example: "6282272552222"
+        deviceSerial:
+          type: string
+          example: "815498833"
+        validateCode:
+          type: string
+          example: QMZRNG
+    addDevice-ezviz:
+      type: object
+      properties:
+        msisdn:
+          type: string
+          example: "6282272552222"
+        deviceSerial:
+          type: string
+          example: "815498833"
+        validateCode:
+          type: string
+          example: QMZRNG
+    "200AddDevice":
+      type: object
+      properties:
+        success:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        data:
+          $ref: '#/components/schemas/data-addDevice'
+    data-addDevice:
+      type: object
+      properties:
+        msisdn:
+          type: string
+          example: "62272552222"
+        deviceSerial:
+          type: string
+          example: "815498833"
+        validateCode:
+          type: string
+          example: QMZRNG
+        accessToken:
+          type: string
+          example: at.by4qgv8f7yyudonf1qn377mcdklei0qo-6m25u95gfb-102n
+        accountId:
+          type: string
+          example: ce00be79a5d
+    "200delete-device":
+      type: object
+      properties:
+        success:
+          type: string
+          example: success
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        data:
+          $ref: '#/components/schemas/data-delete-device'
+    data-delete-device:
+      type: object
+      properties:
+        msisdn:
+          type: string
+          example: "6282272552222"
+        deviceSerial:
+          type: string
+          example: "815498833"
+    Camera:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: array
+          example:
+          - camera_serial: IPC_9081040
+            camera_brand: iCode
+            camera_name: icode bdg
+            detail:
+              alarmSoundMode: 0
+              config_file3: "123"
+              dbId: 0
+              defence: 0
+              deviceType: ""
+              deviceVersion: ""
+              device_db_id: 0
+              from_db: true
+              isEncrypt: 0
+              offlineNotify: 0
+              status: 0
+              timeZone: ""
+              updateTime: ""
+              wifiSsid: IHSMART
+            device_version: v.1
+            device_local_ip: 192.168.100.1
+            sdcard_status: aktif
+          - camera_serial: IPC_9081040
+            camera_brand: iCode
+            camera_name: icode jkt
+            detail:
+              alarmSoundMode: 0
+              config_file3: "123"
+              dbId: 0
+              defence: 0
+              deviceType: ""
+              deviceVersion: ""
+              device_db_id: 0
+              from_db: true
+              isEncrypt: 0
+              offlineNotify: 0
+              status: 0
+              timeZone: ""
+              updateTime: ""
+              wifiSsid: IHSMART
+          items:
+            $ref: '#/components/schemas/List-Camera'
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+    List-Camera:
+      type: object
+      properties:
+        camera_serial:
+          type: string
+        camera_brand:
+          type: string
+        camera_name:
+          type: string
+        detail:
+          $ref: '#/components/schemas/ListCamera_detail'
+        device_version:
+          type: string
+        device_local_ip:
+          type: string
+        sdcard_status:
+          type: string
+    updateDevices:
+      required:
+      - brand
+      - deviceSerial
+      - msisdn
+      type: object
+      properties:
+        brand:
+          type: string
+          example: icode
+        msisdn:
+          type: string
+          example: "122767866568"
+        deviceSerial:
+          type: string
+          example: IPC_14354556
+        device_local_ip:
+          type: string
+          example: 192.168.100.1
+        device_name:
+          type: string
+          example: device postman
+        device_version:
+          type: string
+          example: v.1
+        sdcard_status:
+          type: string
+        ssid:
+          type: string
+          example: DDSBandung
+    "200UpdateDevice":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/updateDevices'
+    updateDevicesEzviz:
+      type: object
+      properties:
+        msisdn:
+          type: string
+          example: "122767866568"
+        deviceSerial:
+          type: string
+          example: IPC_14354556
+        device_db_id:
+          type: integer
+          example: 8272
+        device_local_ip:
+          type: string
+          example: 192.168.100.1
+        device_name:
+          type: string
+          example: device postman
+        device_version:
+          type: string
+          example: v.1
+        sdcard_status:
+          type: string
+        ssid:
+          type: string
+          example: DDSBandung
+    "200UpdateDeviceEzviz":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/updateDevices'
+    BodyAlarm:
+      type: object
+      properties:
+        brand:
+          type: string
+          example: iruma
+        deviceId:
+          type: string
+          example: "174023529"
+        devSerial:
+          type: string
+          example: UDS6DBTBS61UWTAM111A
+        picture_url:
+          type: string
+          example: https://isgp.ezvizlife.com/c/phIk56_e
+        picture_id:
+          type: string
+          example: 20190709064929-174023529-1-40002-2-1
+        alarmType:
+          type: string
+          example: Linkage
+    "200createAlarm":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/200createAlarm_data'
+    "200Alarm":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          type: array
+          example:
+          - alarmId: 412bda44-99e0-11e9-8000-e0a3c0468a3b
+            deviceId: "167687147"
+            devSerial: "167687147"
+            channelName: C6C(167687147)
+            crypt: 1
+            picture_shortUrl: https://isgp.ezvizlife.com/c/pwvaAo_e
+            picture_url: https://isgp.ezvizlife.com/streamer/alarm/url
+            picture_id: 20190628130636-167687147-1-10002-2-1
+            channel: 1
+            channelType: 1
+            relationId: ""
+            status: 1
+            msisdn: 20190628130636-167687147-1-10002-2-1
+            alarmType: motiondetect
+            describe: motiondetect
+            location: ""
+            isread: 0
+          - alarmId: 412bda44-99e0-11e9-8000-e0a3c0468a3b
+            deviceId: "167687147"
+            devSerial: "167687147"
+            channelName: C6C(167687147)
+            crypt: 1
+            picture_shortUrl: https://isgp.ezvizlife.com/c/pwvaAo_e
+            picture_url: https://isgp.ezvizlife.com/streamer/alarm/url
+            picture_id: 20190628130636-167687147-1-10002-2-1
+            channel: 1
+            channelType: 1
+            relationId: ""
+            status: 1
+            msisdn: 20190628130636-167687147-1-10002-2-1
+            alarmType: motiondetect
+            describe: motiondetect
+            location: ""
+            isread: 0
+          items:
+            type: object
+    "200PutAlarm":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/200PutAlarm_data'
+    "200DeleteAlarm":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          type: object
+    body-put-alarm:
+      type: object
+      properties:
+        alarmId:
+          type: string
+          example: 0b749ea7-05a7-4d88-9a1b-33b1837e19ca
+        msisdn:
+          type: string
+          example: "122604236276"
+        isreadAll:
+          type: integer
+          example: 0
+    "200FcmToken":
+      type: object
+      properties:
+        success:
+          type: string
+          example: "true"
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: '#/components/schemas/body'
+    "200DeleteFCM":
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: '#/components/schemas/200DeleteFCM_data'
+        message:
+          type: string
+          example: Your Request Has Been Processed
+        code:
+          type: integer
+          example: 200
+    body:
+      type: object
+      properties:
+        ndmain:
+          type: string
+          example: "122604292411"
+        fcm_token:
+          type: string
+          example: abcacbc
+    "200GetUsers_data":
+      type: object
+      properties:
+        fullname:
+          type: string
+          example: Dimas Dandi Josia
+        msisdn:
+          type: string
+          example: "081380173208"
+        gender:
+          type: string
+          example: Pria
+        profile:
+          type: string
+          example: 6GFAtgfTYrY
+        address:
+          type: string
+          example: Jkt
+        city:
+          type: string
+          example: Jakarta
+        email:
+          type: string
+          example: dimasdandi77@gmail.com
+        updatedAt:
+          type: string
+          example: 2019-07-16T05:39:30.000Z
+        id:
+          type: string
+          example: "2508338"
+    "200getezviztoken_data":
+      type: object
+      properties:
+        ezvizToken:
+          $ref: '#/components/schemas/get-ezviz-token'
+    ListCamera_detail:
+      type: object
+      properties:
+        alarmSoundMode:
+          type: integer
+        config_file3:
+          type: string
+        dbId:
+          type: integer
+        defence:
+          type: integer
+        deviceType:
+          type: string
+        deviceVersion:
+          type: string
+        device_db_id:
+          type: string
+        from_db:
+          type: boolean
+        isEncrypt:
+          type: integer
+        offlineNotify:
+          type: integer
+        status:
+          type: integer
+        timeZone:
+          type: string
+        updateTime:
+          type: string
+        wifiSsid:
+          type: string
+    "200createAlarm_data":
+      type: object
+      properties:
+        brand:
+          type: string
+          example: iruma
+        deviceId:
+          type: string
+          example: "174023529"
+        devSerial:
+          type: string
+          example: UDS6DBTBS61UWTAM111A
+        picture_url:
+          type: string
+          example: https://isgp.ezvizlife.com/c/phIk56_e
+        picture_id:
+          type: string
+          example: 20190709064929-174023529-1-40002-2-1
+        alarmType:
+          type: string
+          example: Linkage
+        msisdn:
+          type: string
+          example: "02121202079"
+        alarmId:
+          type: string
+          example: e16f69c5-e5aa-4077-8e05-ef70241e9fb7
+        picture_shortUrl:
+          type: string
+          example: https://isgp.ezvizlife.com/c/phIk56_e
+        crypt:
+          type: integer
+          example: 0
+        channel:
+          type: integer
+          example: 1
+        status:
+          type: integer
+          example: 0
+        alarmTime:
+          type: string
+          example: 2019-10-07T03:28:33
+        location:
+          type: string
+        relationId:
+          type: string
+          example: e9b5ece0-c589-4516-b8d3-a9de40027286
+        isread:
+          type: integer
+          example: 0
+        channelType:
+          type: integer
+          example: 0
+        channelName:
+          type: string
+          example: No Name Device
+        describe:
+          type: string
+          example: No message
+    "200PutAlarm_data":
+      type: object
+      properties:
+        fieldCount:
+          type: integer
+          example: 0
+        affectedRows:
+          type: integer
+          example: 0
+        insertId:
+          type: integer
+          example: 0
+        serverStatus:
+          type: integer
+          example: 2
+        warningCount:
+          type: integer
+          example: 0
+        message:
+          type: string
+        matched:
+          type: integer
+          example: 0
+        Changed:
+          type: integer
+          example: 0
+        Warnings:
+          type: integer
+          example: 0
+        protocol141:
+          type: boolean
+          example: true
+        changedRows:
+          type: integer
+          example: 0
+    "200DeleteFCM_data":
+      type: object
+      properties:
+        fcm_token:
+          type: string
+          example: cdsij9Uihcjc9380HIhix0
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    bearerAuth:
+      type: http
+      scheme: bearer
